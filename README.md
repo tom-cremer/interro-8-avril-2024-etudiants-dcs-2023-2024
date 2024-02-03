@@ -9,7 +9,7 @@ Le repo git contient naturellement une branche `main` qui est normalement destin
 
 Nous tenterons, sans pour autant utiliser un outil formel tel que Pest ou PHPUnit, d’associer à notre code des scripts de maintenance et de tests pour certaines fonctionnalités. Nous n'utiliserons pas une approche TDD, mais nous tenterons parfois de nous y sensibiliser.
 
-Une excellente référence qui vous permettra de compléter le cours et qui aborde les points qui y sont vus de la même manière que la mienne est la série de vidéos gratuites sur [Laracasts](https://laracasts.com/series/php-for-beginners) destinée aux débutants.
+Une excellente référence qui vous permettra de compléter le cours et qui aborde les points qui y sont vus de la même manière que la mienne est la série de vidéos gratuites sur [Laracasts](https://laracasts.com/series/php-for-beginners-2023-edition) destinée aux débutants.
 
 Une ressource Web de qualité sur les bonnes pratiques associées au monde PHP est [PHP The Right Way](https://phptherightway.com/). Le site propose même [des traductions de son contenu](https://phptherightway.com/#translations).
 
