@@ -3,7 +3,7 @@
 Ce repo contient le code de référence qui servira durant le cours. Le cours sera construit autour de la réalisation
 d'une application destinée à vous familiariser avec les principes essentiels qui guident le bon développeur backend.
 
-Nous construirons cette application en utilisant le langage de programmation PHP, sans Framework, mais avec la volonté de mimer les pratiques présentent dans ces derniers et tout particulièrement [Laravel](https://laravel.com).
+Nous construirons cette application en utilisant le langage de programmation PHP, sans Framework, mais avec la volonté de mimer les pratiques présentent dans ces derniers et tout particulièrement [Laravel](https://laravel.com). PHP est un langage qui a par ailleurs [une excellente documentation](https://www.php.net) et une communauté active. Il est donc un excellent choix pour un premier langage de programmation côté serveur. Longtemps associé à une réputation de langage pour bricoleurs car relativement permissif, il est désormais standardisé par des [PSRs](https://www.php-fig.org/psr/) qui sont le résultat d’une initiative visant à rendre les packages de PHP interopérables et est un terrain où les meilleures pratiques en matière de développement logiciel prévalent.
 
 Le repo git contient naturellement une branche `main` qui est normalement destinée à ne recevoir que la version la plus stable du code. Cependant, pour les besoins du cours, nous utiliserons une branche `develop` qui contiendra le code en cours de développement et peut-être des branches supplémentaires pour des fonctionnalités spécifiques. La fusion des fonctionnalités dans la branche `develop` se fera par le biais de pull requests.
 
