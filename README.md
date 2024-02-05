@@ -15,4 +15,4 @@ Une ressource Web de qualité sur les bonnes pratiques associées au monde PHP e
 
 [La documentation de Laravel](https://laravel.com/docs) contient aussi des informations pertinentes pour les développeurs PHP, même si elles sont orientées vers le Framework Laravel. Cette documentation constitue d'une certaine manière, notre cahier de charges.
 
-Vous avez droit, grâce à votre qualité d’étudiant, à une licence de Tinkerwell. Tinkerwell est un outil qui vous permet de tester du code PHP en temps réel. Vous pouvez le télécharger [sur le site de Tinkerwell](https://tinkerwell.app/), mais il faut auparavant vous inscrire sur le site de [Beyond Code](https://beyondco.de/login) avec votre adresse d’étudiant et [vous identifier comme étudiant](https://tinkerwell.app/education).
+Vous avez droit, grâce à votre qualité d’étudiant, à une licence de Tinkerwell. [Tinkerwell](https://tinkerwell.app/) est un outil qui vous permet de tester du code PHP en temps réel. Avant de le télécharger, il faut vous inscrire sur le site de [Beyond Code](https://beyondco.de/login) avec votre adresse d’étudiant et [vous identifier comme étudiant](https://tinkerwell.app/education).
