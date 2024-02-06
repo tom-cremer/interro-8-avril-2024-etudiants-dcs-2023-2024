@@ -1,8 +1,18 @@
 <?php
 
-$jiris = ['Projets Web 2024', 'Design Web 2024', 'Projets Web 2025', 'Design Web 2023',];
-$upcoming_jiris = [$jiris[2], $jiris[1]];
-$passed_jiris = [$jiris[0], $jiris[3]];
+$now = time();
+$jiris = [
+    ['name' => 'Projets Web 2024', 'id' => 3, 'starting_at' => '2024-01-19 08:30:00'],
+    ['name' => 'Design Web 2024', 'id' => 4, 'starting_at' => '2024-06-19 08:30:00'],
+    ['name' => 'Projets Web 2025', 'id' => 9, 'starting_at' => '2025-01-19 08:30:00'],
+    ['name' => 'Design Web 2023', 'id' => 2, 'starting_at' => '2023-06-19 08:30:00'],
+];
+$upcoming_jiris = array_filter($jiris, function ($v, $k) use ($now) {
+    $date = new DateTimeImmutable($v['starting_at']);
+    return ($now - $date->getTimestamp()) < 0;
+}, ARRAY_FILTER_USE_BOTH);
+
+//$passed_jiris = ;
 ?>
 <!-- VIEW -->
 <!doctype html>
@@ -30,7 +40,7 @@ $passed_jiris = [$jiris[0], $jiris[3]];
                   <?php
                   foreach ($upcoming_jiris as $jiri): ?>
                     <li><a class="underline text-blue-500"
-                           href="/jiris/7"><?= $jiri ?></a></li>
+                           href="/jiris/<?= $jiri['id'] ?>"><?= $jiri['name'] ?></a></li>
                   <?php
                   endforeach ?>
               </ol>
@@ -45,7 +55,7 @@ $passed_jiris = [$jiris[0], $jiris[3]];
                   <?php
                   foreach ($passed_jiris as $jiri): ?>
                     <li><a class="underline text-blue-500"
-                           href="/jiris/7"><?= $jiri ?></a></li>
+                           href="/jiris/<?= $jiri['id'] ?>"><?= $jiri['name'] ?></a></li>
                   <?php
                   endforeach ?>
               </ol>
