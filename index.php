@@ -12,7 +12,14 @@ $upcoming_jiris = array_filter($jiris, function ($v, $k) use ($now) {
     return ($now - $date->getTimestamp()) < 0;
 }, ARRAY_FILTER_USE_BOTH);
 
-//$passed_jiris = ;
+$passed_jiris = array_filter($jiris, function ($v, $k) use ($now) {
+    $date = new DateTimeImmutable($v['starting_at']);
+    return ($now - $date->getTimestamp()) >= 0;
+}, ARRAY_FILTER_USE_BOTH);
+
+// TODO
+// The callback is a bit redundant, right ?
+
 ?>
 <!-- VIEW -->
 <!doctype html>
