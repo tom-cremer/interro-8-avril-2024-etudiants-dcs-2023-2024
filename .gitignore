@@ -107,3 +107,4 @@ fabric.properties
 *.xml
 *.iml
 .idea/.gitignore
+/.env.local.ini
