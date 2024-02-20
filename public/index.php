@@ -1,8 +1,12 @@
 <?php
 
-require_once './database/database.php';
+use Core\Database;
 
-$db = getPDO();
+const BASE_PATH = __DIR__.'/..';
+
+require BASE_PATH.'/vendor/autoload.php';
+
+$db = new Database(BASE_PATH.'/.env.local.ini');
 
 
 // Récupérer dans les deux arrays ci-dessous les jiris à venir et passés
