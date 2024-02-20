@@ -1,13 +1,16 @@
 <?php
-
-use Core\Database;
-
 const BASE_PATH = __DIR__.'/..';
 
 require BASE_PATH.'/vendor/autoload.php';
 
-$db = new Database(BASE_PATH.'/.env.local.ini');
+use Core\Exceptions\FileNotFoundException;
 
+
+try {
+    $db = new Core\Database(BASE_PATH.'/.env.local.ini');
+} catch (FileNotFoundException $exception) {
+    die($exception->getMessage());
+}
 
 // Récupérer dans les deux arrays ci-dessous les jiris à venir et passés
 

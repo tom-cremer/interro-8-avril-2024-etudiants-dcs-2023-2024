@@ -2,7 +2,13 @@
 
 
 // Get a connection to Db
-$db = new Core\Database(BASE_PATH.'/.env.local.ini');
+use Core\Exceptions\FileNotFoundException;
+
+try {
+    $db = new Core\Database(BASE_PATH.'/.env.local.ini');
+} catch (FileNotFoundException $exception) {
+    die($exception->getMessage());
+}
 
 // Drop tables
 echo 'Dropping all Tables'.PHP_EOL;

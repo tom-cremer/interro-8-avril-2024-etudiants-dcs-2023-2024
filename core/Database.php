@@ -2,6 +2,7 @@
 
 namespace Core;
 
+use Core\Exceptions\FileNotFoundException;
 use PDO;
 use PDOException;
 
@@ -22,7 +23,7 @@ class Database extends PDO
             $username = $config['DATABASE']['DB_USER'];
             $password = $config['DATABASE']['DB_PASSWORD'];
         } else {
-            die('Un problème est apparu dans la phase d’initialisation de l’application');
+            throw new FileNotFoundException('Un problème est apparu dans la phase d’initialisation de l’application');
         }
 
         $dsn = sprintf(
