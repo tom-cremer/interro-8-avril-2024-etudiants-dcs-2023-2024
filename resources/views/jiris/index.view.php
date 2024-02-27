@@ -19,6 +19,11 @@
         <div class="container mx-auto flex flex-col-reverse gap-6">
             <main class="flex flex-col gap-4">
                 <h1 class="font-bold text-2xl">Jiris</h1>
+                <form action="/">
+                    <label for="search" class="font-bold">Nom du jiri</label>
+                    <input type="text" id="search" name="search" class="border rounded-md">
+                    <button type="submit" class="bg-blue-500 text-white rounded-md px-4">Chercher</button>
+                </form>
                 <section>
                     <h2 class="font-bold">Jiris à venir</h2>
                     <?php

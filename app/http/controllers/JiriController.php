@@ -20,13 +20,29 @@ class JiriController
 
     public function index(): void
     {
+        $search = $_GET['search'] ?? '';
+
+        $sql_upcoming_jiris = <<<SQL
+                SELECT * FROM jiris 
+                         WHERE name LIKE :search  
+                               AND starting_at > current_timestamp
+                SQL;
         $statement_upcoming_jiris =
-            $this->db->query('SELECT * FROM jiris WHERE starting_at > current_timestamp');
+            $this->db->prepare($sql_upcoming_jiris);
+        $statement_upcoming_jiris->bindValue(':search',"%{$search}%");
+        $statement_upcoming_jiris->execute();
         $upcoming_jiris =
             $statement_upcoming_jiris->fetchAll();
 
+        $sql_passed_jiris = <<<SQL
+                SELECT * FROM jiris 
+                         WHERE name LIKE :search
+                             AND starting_at < current_timestamp
+                SQL;
         $statement_passed_jiris =
-            $this->db->query('SELECT * FROM jiris WHERE starting_at < current_timestamp');
+            $this->db->prepare($sql_passed_jiris);
+        $statement_passed_jiris->bindValue(':search',"%{$search}%");
+        $statement_passed_jiris->execute();
         $passed_jiris =
             $statement_passed_jiris->fetchAll();
 
