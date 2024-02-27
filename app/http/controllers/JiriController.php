@@ -32,4 +32,9 @@ class JiriController
 
         view('jiris.index', compact('upcoming_jiris', 'passed_jiris'));
     }
+
+    public function create()
+    {
+        echo "display a creation form for jiris";
+    }
 }
