@@ -21,7 +21,7 @@
                 <h1 class="font-bold text-2xl">Jiris</h1>
                 <form action="/">
                     <label for="search" class="font-bold">Nom du jiri</label>
-                    <input type="text" id="search" name="search" class="border rounded-md">
+                    <input type="text" id="search" name="search" class="border rounded-md px-2">
                     <button type="submit" class="bg-blue-500 text-white rounded-md px-4">Chercher</button>
                 </form>
                 <section>
@@ -32,7 +32,7 @@
                             <?php
                             foreach ($upcoming_jiris as $jiri): ?>
                                 <li><a class="underline text-blue-500"
-                                       href="/jiris/<?= $jiri->id ?>"><?= $jiri->name ?></a></li>
+                                       href="/jiri?id=<?= $jiri->id ?>"><?= $jiri->name ?></a></li>
                             <?php
                             endforeach ?>
                         </ol>
@@ -47,19 +47,22 @@
                             <?php
                             foreach ($passed_jiris as $jiri): ?>
                                 <li><a class="underline text-blue-500"
-                                       href="/jiris/<?= $jiri->id ?>"><?= $jiri->name ?></a></li>
+                                       href="/jiri?id=<?= $jiri->id ?>"><?= $jiri->name ?></a></li>
                             <?php
                             endforeach ?>
                         </ol>
                     <?php
                     endif ?>
                 </section>
+                <div>
+                    <a href="/jiri/create" class="underline text-blue-500">Créer un nouveau jiri</a>
+                </div>
             </main>
             <nav id="main-menu">
                 <h2 class="sr-only">Menu principal</h2>
                 <ul class="flex gap-4">
                     <li><a class="underline text-blue-500"
-                           href="#">Jiris</a></li>
+                           href="/jiris">Jiris</a></li>
                     <li><a class="underline text-blue-500"
                            href="/contacts">Contacts</a></li>
                     <li><a class="underline text-blue-500"

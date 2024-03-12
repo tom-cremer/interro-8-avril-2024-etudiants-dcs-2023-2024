@@ -3,12 +3,14 @@
   "description": "An app to rule all the jiris",
   "require": {
     "php": "^8.2",
-    "ext-pdo": "*"
+    "ext-pdo": "*",
+    "ext-ctype": "*"
   },
   "autoload": {
     "psr-4": {
       "Core\\": "core/",
-      "App\\Http\\Controllers\\": "app/http/controllers/"
+      "App\\Http\\Controllers\\": "app/http/controllers/",
+      "App\\Models\\": "app/models/"
     }
   },
   "authors": [
