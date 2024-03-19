@@ -32,5 +32,14 @@ function method(string $method):void
 <input type="hidden" name="_method" value="$method">
 
 HTML;
+}
 
+function csrf_token()
+{
+$token = bin2hex(random_bytes(32));
+$_SESSION['csrf_token'] = $token;
+    echo <<<HTML
+<input type="hidden" name="_csrf" value="$token">
+
+HTML;
 }

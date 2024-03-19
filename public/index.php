@@ -7,6 +7,8 @@ const BASE_PATH = __DIR__.'/..';
 require BASE_PATH.'/core/helpers/functions.php';
 require base_path('vendor/autoload.php');
 
+session_start();
+
 $router = new Router();
 require base_path('routes/web.php');
 

@@ -9,6 +9,8 @@
   "autoload": {
     "psr-4": {
       "Core\\": "core/",
+      "Core\\Middlewares\\": "core/middlewares",
+      "Core\\Exceptions\\": "core/exceptions",
       "App\\Http\\Controllers\\": "app/http/controllers/",
       "App\\Models\\": "app/models/"
     }

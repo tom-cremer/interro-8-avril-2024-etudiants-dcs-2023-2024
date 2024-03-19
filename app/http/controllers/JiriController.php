@@ -101,19 +101,6 @@ class JiriController
         view('jiris.edit', compact('jiri'));
     }
 
-    public function destroy(): void
-    {
-        //Récupérer l'id
-        if (!isset($_POST['id']) || !ctype_digit($_POST['id'])) {
-            Response::abort(Response::BAD_REQUEST);
-        }
-        $id = $_POST['id'];
-
-        $this->jiri->delete($id);
-
-        Response::redirect('/jiris');
-    }
-
     public function update(): void
     {
         //Récupérer l'id
@@ -130,5 +117,18 @@ class JiriController
         $this->jiri->update($id, $data);
 
         Response::redirect('/jiri?id='.$id);
+    }
+
+    public function destroy(): void
+    {
+        //Récupérer l'id
+        if (!isset($_POST['id']) || !ctype_digit($_POST['id'])) {
+            Response::abort(Response::BAD_REQUEST);
+        }
+        $id = $_POST['id'];
+
+        $this->jiri->delete($id);
+
+        Response::redirect('/jiris');
     }
 }
