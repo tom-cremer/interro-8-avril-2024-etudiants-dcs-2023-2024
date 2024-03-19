@@ -18,7 +18,8 @@
         <div class="container mx-auto flex flex-col-reverse gap-6">
             <main class="flex flex-col gap-4">
                 <h1 class="font-bold text-2xl">Modifier <?= $jiri->name ?></h1>
-                <form action="/jiri/update" method="post" class="flex flex-col gap-4">
+                <form action="/jiri" method="post" class="flex flex-col gap-4">
+                    <?php method('patch') ?>
                     <input type="hidden" name="id" value="<?= $jiri->id ?>">
                     <div>
                         <label for="name" class="font-bold">Nom</label>
@@ -30,7 +31,8 @@
                     </div>
                     <button type="submit" class="rounded bg-blue-500 text-white">Enregistrer la modification</button>
                 </form>
-                <form action="/jiri/delete" method="post">
+                <form action="/jiri" method="post">
+                    <?php method('delete') ?>
                     <input type="hidden" name="id" value="<?= $jiri->id ?>">
                     <button type="submit" class="text-red-500">Supprimer ce jiri</button>
                 </form>

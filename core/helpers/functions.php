@@ -25,3 +25,12 @@ function base_path(string $path = ''): string
 {
     return BASE_PATH."/{$path}";
 }
+
+function method(string $method):void
+{
+    echo <<<HTML
+<input type="hidden" name="_method" value="$method">
+
+HTML;
+
+}
