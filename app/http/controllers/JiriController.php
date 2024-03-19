@@ -57,6 +57,10 @@ class JiriController
 
     public function store(): void
     {
+        if (!isset($_REQUEST['_csrf']) || $_SESSION['csrf_token'] !== $_REQUEST['_csrf']) {
+            Response::abort(Response::BAD_REQUEST);
+        }
+        unset($_SESSION['csrf_token']);
         //Validation
         if (!isset($_POST['name'], $_POST['starting_at'])) {
             Response::abort(Response::BAD_REQUEST);
@@ -101,21 +105,12 @@ class JiriController
         view('jiris.edit', compact('jiri'));
     }
 
-    public function destroy(): void
-    {
-        //Récupérer l'id
-        if (!isset($_POST['id']) || !ctype_digit($_POST['id'])) {
-            Response::abort(Response::BAD_REQUEST);
-        }
-        $id = $_POST['id'];
-
-        $this->jiri->delete($id);
-
-        Response::redirect('/jiris');
-    }
-
     public function update(): void
     {
+        if (!isset($_REQUEST['_csrf']) || $_SESSION['csrf_token'] !== $_REQUEST['_csrf']) {
+            Response::abort(Response::BAD_REQUEST);
+        }
+        unset($_SESSION['csrf_token']);
         //Récupérer l'id
         if (!isset($_POST['id']) || !ctype_digit($_POST['id'])) {
             Response::abort(Response::BAD_REQUEST);
@@ -130,5 +125,22 @@ class JiriController
         $this->jiri->update($id, $data);
 
         Response::redirect('/jiri?id='.$id);
+    }
+
+    public function destroy(): void
+    {
+        if (!isset($_REQUEST['_csrf']) || $_SESSION['csrf_token'] !== $_REQUEST['_csrf']) {
+            Response::abort(Response::BAD_REQUEST);
+        }
+        unset($_SESSION['csrf_token']);
+        //Récupérer l'id
+        if (!isset($_POST['id']) || !ctype_digit($_POST['id'])) {
+            Response::abort(Response::BAD_REQUEST);
+        }
+        $id = $_POST['id'];
+
+        $this->jiri->delete($id);
+
+        Response::redirect('/jiris');
     }
 }

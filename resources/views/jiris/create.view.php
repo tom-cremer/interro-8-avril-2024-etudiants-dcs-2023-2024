@@ -16,6 +16,7 @@
             <main class="flex flex-col gap-4">
                 <h1 class="font-bold text-2xl">Jiris</h1>
                 <form action="/jiri" method="post" class="flex flex-col gap-4">
+                    <?php csrf_token() ?>
                     <div>
                         <label for="name"
                               class="font-bold">Nom du jiri</label>

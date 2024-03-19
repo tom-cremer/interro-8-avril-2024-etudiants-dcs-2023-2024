@@ -35,8 +35,8 @@
                 </div>
                 <form action="/jiri"
                       method="post">
-                    <?php
-                    method('delete') ?>
+                    <?php method('delete') ?>
+                    <?php csrf_token() ?>
                     <input type="hidden"
                            name="id"
                            value="<?= $jiri->id ?>">

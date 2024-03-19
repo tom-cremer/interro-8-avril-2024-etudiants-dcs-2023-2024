@@ -20,6 +20,7 @@
                 <h1 class="font-bold text-2xl">Modifier <?= $jiri->name ?></h1>
                 <form action="/jiri" method="post" class="flex flex-col gap-4">
                     <?php method('patch') ?>
+                    <?php csrf_token() ?>
                     <input type="hidden" name="id" value="<?= $jiri->id ?>">
                     <div>
                         <label for="name" class="font-bold">Nom</label>
@@ -33,6 +34,7 @@
                 </form>
                 <form action="/jiri" method="post">
                     <?php method('delete') ?>
+                    <?php csrf_token() ?>
                     <input type="hidden" name="id" value="<?= $jiri->id ?>">
                     <button type="submit" class="text-red-500">Supprimer ce jiri</button>
                 </form>
