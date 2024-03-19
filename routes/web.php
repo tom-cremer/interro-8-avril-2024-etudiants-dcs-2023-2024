@@ -10,12 +10,12 @@ $router->get('/jiris', [JiriController::class, 'index']);//done
 $router->get('/jiri', [JiriController::class, 'show']);//done
 
 $router->get('/jiri/create', [JiriController::class, 'create']);//done
-$router->post('/jiri', [JiriController::class, 'store']);//done
+$router->post('/jiri', [JiriController::class, 'store'])->csrf();//done
 
 $router->get('/jiri/edit', [JiriController::class, 'edit']);
-$router->patch('/jiri', [JiriController::class, 'update']);
+$router->patch('/jiri', [JiriController::class, 'update'])->csrf();
 
 
-$router->delete('/jiri', [JiriController::class, 'destroy']);//done
+$router->delete('/jiri', [JiriController::class, 'destroy'])->csrf();//done
 
 
