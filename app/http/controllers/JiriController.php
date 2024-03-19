@@ -63,14 +63,12 @@ class JiriController
         }
         // Tester la qualité des données
 
-        //Save in database
-        $insert_jiri_in_jiris_table_sql = 'INSERT INTO jiris (name, starting_at) VALUES (:name, :starting_at)';
-        $insert_jiri_in_jiris_table_stmt = $this->jiri->prepare($insert_jiri_in_jiris_table_sql);
-        $success = $insert_jiri_in_jiris_table_stmt->execute([
+        $data = [
             'name' => $_POST['name'],
             'starting_at' => $_POST['starting_at'],
-        ]);
-        if ($success) {
+        ];
+
+        if ($this->jiri->create($data)) {
             Response::redirect('/jiris');
         } else {
             Response::abort(Response::SERVER_ERROR);
@@ -90,7 +88,20 @@ class JiriController
         view('jiris.show', compact('jiri'));
     }
 
-    public function destroy():void
+    public function edit(): void
+    {
+        //Récupérer l'id
+        if (!isset($_GET['id']) || !ctype_digit($_GET['id'])) {
+            Response::abort(Response::BAD_REQUEST);
+        }
+        $id = $_GET['id'];
+
+        $jiri = $this->jiri->findOrFail($id);
+
+        view('jiris.edit', compact('jiri'));
+    }
+
+    public function destroy(): void
     {
         //Récupérer l'id
         if (!isset($_POST['id']) || !ctype_digit($_POST['id'])) {
@@ -98,8 +109,26 @@ class JiriController
         }
         $id = $_POST['id'];
 
-       $this->jiri->delete($id);
+        $this->jiri->delete($id);
 
         Response::redirect('/jiris');
+    }
+
+    public function update(): void
+    {
+        //Récupérer l'id
+        if (!isset($_POST['id']) || !ctype_digit($_POST['id'])) {
+            Response::abort(Response::BAD_REQUEST);
+        }
+        $id = $_POST['id'];
+
+        $data = [
+            'name' => $_POST['name'],
+            'starting_at' => $_POST['starting_at'],
+        ];
+
+        $this->jiri->update($id, $data);
+
+        Response::redirect('/jiri?id='.$id);
     }
 }
