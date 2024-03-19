@@ -64,9 +64,8 @@ class Database extends PDO
         $sql = <<<SQL
                 SELECT * FROM $this->table 
                          WHERE id = :id  
-                SQL;
-        $statement =
-            $this->prepare($sql);
+        SQL;
+        $statement = $this->prepare($sql);
         $statement->execute(['id' => $id]);
         return $statement->fetch();
     }
@@ -87,10 +86,49 @@ class Database extends PDO
         $sql = <<<SQL
                 DELETE FROM $this->table 
                          WHERE id = :id  
-                SQL;
-        $statement =
-            $this->prepare($sql);
+        SQL;
+        return $this->prepare($sql)->execute(['id' => $id]);
+    }
 
-        return $statement->execute(['id' => $id]);
+    public function update(string $id, array $data): bool
+    {
+        $updateString = implode(', ', array_map(static function ($key) {
+            return "`$key` = :$key";
+        }, array_keys($data)));
+
+        $sql = <<<SQL
+            UPDATE $this->table 
+            SET $updateString
+                WHERE id = :id
+        SQL;
+        $statement = $this->prepare($sql);
+        $statement->bindValue('id', $id);
+
+        foreach ($data as $k => $v) {
+            $statement->bindValue($k, $v);
+        }
+
+        return $statement->execute();
+    }
+
+    public function create(array $data): bool
+    {
+        $columns = implode(',', array_keys($data));
+        $placeholders = implode(', ', array_map(static function ($key) {
+            return ":$key";
+        }, array_keys($data)));
+
+        $sql = <<<SQL
+            INSERT INTO jiris ($columns) 
+            VALUES ($placeholders)
+        SQL;
+
+        $statement = $this->prepare($sql);
+
+        foreach ($data as $k => $v) {
+            $statement->bindValue($k, $v);
+        }
+
+        return $statement->execute();
     }
 }
