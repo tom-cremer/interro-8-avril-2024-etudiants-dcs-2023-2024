@@ -13,9 +13,9 @@ $router->get('/jiri/create', [JiriController::class, 'create']);//done
 $router->post('/jiri', [JiriController::class, 'store']);//done
 
 $router->get('/jiri/edit', [JiriController::class, 'edit']);
-$router->post('/jiri/update', [JiriController::class, 'update']);
+$router->patch('/jiri', [JiriController::class, 'update']);
 
 
-$router->post('/jiri/delete', [JiriController::class, 'destroy']);//done
+$router->delete('/jiri', [JiriController::class, 'destroy']);//done
 
 

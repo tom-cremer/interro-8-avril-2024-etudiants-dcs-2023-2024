@@ -16,6 +16,16 @@ class Router
         $this->add($path, $action, 'POST');
     }
 
+    public function patch(string $path, array $action): void
+    {
+        $this->add($path, $action, 'PATCH');
+    }
+
+    public function delete(string $path, array $action): void
+    {
+        $this->add($path, $action, 'DELETE');
+    }
+
     private function add(string $path, array $action, string $request_method): void
     {
         $this->routes[] = compact('path', 'action', 'request_method');
@@ -27,7 +37,8 @@ class Router
             array_values(
                 array_filter(
                     $this->routes,
-                    fn($v, $k) => $v['path'] === $request_uri && $v['request_method'] === $request_method,
+                    fn($v, $k) => $v['path'] === $request_uri
+                        && strtoupper($v['request_method']) === strtoupper($request_method),
                     ARRAY_FILTER_USE_BOTH
                 )
             );
@@ -43,4 +54,6 @@ class Router
         $controller = new $controller_name();
         $controller->{$method_name}();
     }
+
+
 }

@@ -1,5 +1,6 @@
 <?php
 /** @var stdClass $jiri */
+
 ?>
 <!doctype html>
 <html lang="fr">
@@ -29,11 +30,19 @@
                     </div>
                 </dl>
                 <div>
-                    <a href="/jiri/edit?id=<?= $jiri->id ?>" class="underline text-blue-500">modifier ce jiri</a>
+                    <a href="/jiri/edit?id=<?= $jiri->id ?>"
+                       class="underline text-blue-500">modifier ce jiri</a>
                 </div>
-                <form action="/jiri/delete" method="post">
-                    <input type="hidden" name="id" value="<?= $jiri->id ?>">
-                    <button type="submit" class="text-red-500">Supprimer ce jiri</button>
+                <form action="/jiri"
+                      method="post">
+                    <?php
+                    method('delete') ?>
+                    <input type="hidden"
+                           name="id"
+                           value="<?= $jiri->id ?>">
+                    <button type="submit"
+                            class="text-red-500">Supprimer ce jiri
+                    </button>
                 </form>
             </main>
             <nav id="main-menu">
