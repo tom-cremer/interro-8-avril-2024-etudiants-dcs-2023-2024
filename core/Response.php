@@ -18,7 +18,7 @@ class Response
         die();
     }
 
-    public static function redirect(string $url)
+    #[NoReturn] public static function redirect(string $url): void
     {
         http_response_code(self::SEE_OTHER);
         header('location: '.$url);

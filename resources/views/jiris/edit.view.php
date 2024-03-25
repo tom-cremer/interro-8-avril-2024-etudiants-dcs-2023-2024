@@ -1,5 +1,6 @@
 <?php
 /** @var stdClass $jiri */
+
 ?>
 <!doctype html>
 <html lang="fr">
@@ -19,38 +20,51 @@
         <div class="container mx-auto flex flex-col-reverse gap-6">
             <main class="flex flex-col gap-4">
                 <h1 class="font-bold text-2xl">Modifier <?= $jiri->name ?></h1>
-                <form action="/jiri" method="post" class="flex flex-col gap-4">
-                    <?php method('patch') ?>
-                    <?php csrf_token() ?>
-                    <input type="hidden" name="id" value="<?= $jiri->id ?>">
-                    <div>
-                        <label for="name" class="font-bold">Nom</label>
-                        <input id="name" type="text" value="<?= $jiri->name ?>" name="name" class="border border-grey-700 px-2">
+                <form action="/jiri"
+                      method="post"
+                      class="flex flex-col gap-6">
+                    <?php
+                    method('patch') ?>
+                    <?php
+                    csrf_token() ?>
+                    <input type="hidden"
+                           name="id"
+                           value="<?= $jiri->id ?>">
+                    <div class="flex flex-col gap-2">
+                        <?php
+                        component('forms.controls.label-and-input', [
+                            'name' => 'name',
+                            'label' => 'Nom <small>au moins 3 caractères, au plus 255</small>',
+                            'type' => 'text',
+                            'value' => $jiri->name,
+                            'placeholder' => 'Mon examen de première session',
+                        ]);
+                        ?>
+                    </div>
+                    <div class="flex flex-col gap-2">
+                        <?php
+                        $date = \Carbon\Carbon::now()->format('Y-m-d H:i');
+                        component('forms.controls.label-and-input', [
+                            'name' => 'starting_at',
+                            'label' => "Date et heure de début <small>au format {$date}</small>",
+                            'type' => 'text',
+                            'value' => \Carbon\Carbon::createFromFormat('Y-m-d H:i:s', $jiri->starting_at)
+                                ->format('Y-m-d H:i'),
+                            'placeholder' => $date,
+                        ]);
+                        ?>
                     </div>
                     <div>
-                        <label for="starting_at" class="font-bold">Date et heure de début</label>
-                        <input id="starting_at" type="text" value="<?= $jiri->starting_at ?>" name="starting_at" class="border border-grey-700 px-2">
+                        <?php
+                        component('forms.controls.button', ['text' => 'Modifier ce jiri']);
+                        ?>
                     </div>
-                    <button type="submit" class="rounded bg-blue-500 text-white">Enregistrer la modification</button>
                 </form>
-                <form action="/jiri" method="post">
-                    <?php method('delete') ?>
-                    <?php csrf_token() ?>
-                    <input type="hidden" name="id" value="<?= $jiri->id ?>">
-                    <button type="submit" class="text-red-500">Supprimer ce jiri</button>
-                </form>
+                <?php
+                component('forms.jiris.delete', ['id' => $jiri->id]) ?>
             </main>
-            <nav id="main-menu">
-                <h2 class="sr-only">Menu principal</h2>
-                <ul class="flex gap-4">
-                    <li><a class="underline text-blue-500"
-                           href="/jiris">Jiris</a></li>
-                    <li><a class="underline text-blue-500"
-                           href="/contacts">Contacts</a></li>
-                    <li><a class="underline text-blue-500"
-                           href="/projects">Projets</a></li>
-                </ul>
-            </nav>
+            <?php
+            component('navigations.main'); ?>
         </div>
     </body>
 </html>
