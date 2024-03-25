@@ -26,7 +26,14 @@ function base_path(string $path = ''): string
     return BASE_PATH."/{$path}";
 }
 
-function method(string $method):void
+function public_path(string $path = ''): string
+{
+    $server = 'http'.($_SERVER['HTTPS'] === 'on' ? 's' : '').'://'.$_SERVER['SERVER_NAME'];
+
+    return "{$server}/$path";
+}
+
+function method(string $method): void
 {
     echo <<<HTML
 <input type="hidden" name="_method" value="$method">
@@ -36,8 +43,8 @@ HTML;
 
 function csrf_token()
 {
-$token = bin2hex(random_bytes(32));
-$_SESSION['csrf_token'] = $token;
+    $token = bin2hex(random_bytes(32));
+    $_SESSION['csrf_token'] = $token;
     echo <<<HTML
 <input type="hidden" name="_csrf" value="$token">
 

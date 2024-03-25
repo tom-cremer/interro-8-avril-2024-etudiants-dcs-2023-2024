@@ -110,3 +110,4 @@ fabric.properties
 /.env.local.ini
 
 /vendor/
+/node_modules/

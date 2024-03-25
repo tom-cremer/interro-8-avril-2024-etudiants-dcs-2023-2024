@@ -7,7 +7,8 @@
         <meta http-equiv="X-UA-Compatible"
               content="ie=edge">
         <title>Jiris</title>
-        <script src="https://cdn.tailwindcss.com"></script>
+        <link rel="stylesheet"
+              href="<?= public_path('css/app.css') ?>">
     </head>
     <body>
         <a class="sr-only"
