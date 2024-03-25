@@ -13,6 +13,7 @@
             'placeholder' => 'Mon examen de première session'
         ]);
         ?>
+
     </div>
     <div class="flex flex-col gap-2">
         <?php
@@ -31,4 +32,8 @@
         <?php
         component('forms.controls.button', ['text' => 'Créer ce jiri']) ?>
     </div>
+    <?php
+    $_SESSION['errors'] = [];
+    $_SESSION['old'] = [];
+    ?>
 </form>

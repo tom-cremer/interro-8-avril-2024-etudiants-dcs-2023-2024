@@ -49,10 +49,10 @@ HTML;
 
 function csrf_token()
 {
-    $token = bin2hex(random_bytes(32));
-    $_SESSION['csrf_token'] = $token;
+    $_SESSION['csrf_token'] = $_SESSION['csrf_token'] ?? bin2hex(random_bytes(32));
+
     echo <<<HTML
-<input type="hidden" name="_csrf" value="$token">
+<input type="hidden" name="_csrf" value="{$_SESSION['csrf_token']}">
 
 HTML;
 }

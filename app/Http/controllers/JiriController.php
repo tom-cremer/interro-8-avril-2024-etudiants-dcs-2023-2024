@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use App\Models\Jiri;
 use Core\Exceptions\FileNotFoundException;
 use Core\Response;
+use Core\Validator;
+use JetBrains\PhpStorm\NoReturn;
 
 class JiriController
 {
@@ -55,18 +57,13 @@ class JiriController
         view('jiris.create');
     }
 
-    public function store(): void
+    #[NoReturn] public function store(): void
     {
-        //Validation
-        if (!isset($_POST['name'], $_POST['starting_at'])) {
-            Response::abort(Response::BAD_REQUEST);
-        }
-        // Tester la qualité des données
 
-        $data = [
-            'name' => $_POST['name'],
-            'starting_at' => $_POST['starting_at'],
-        ];
+        $data = Validator::check([
+            'name' => 'required|min:3|max:255',
+            'starting_at' => 'required|datetime',
+        ]);
 
         if ($this->jiri->create($data)) {
             Response::redirect('/jiris');
