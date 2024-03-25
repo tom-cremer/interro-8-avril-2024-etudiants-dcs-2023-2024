@@ -4,15 +4,13 @@
   "require": {
     "php": "^8.2",
     "ext-pdo": "*",
-    "ext-ctype": "*"
+    "ext-ctype": "*",
+    "nesbot/carbon": "^3.1"
   },
   "autoload": {
     "psr-4": {
       "Core\\": "core/",
-      "Core\\Middlewares\\": "core/middlewares",
-      "Core\\Exceptions\\": "core/exceptions",
-      "App\\Http\\Controllers\\": "app/http/controllers/",
-      "App\\Models\\": "app/models/"
+      "App\\": "app/"
     }
   },
   "authors": [

@@ -27,36 +27,25 @@
                     </div>
                     <div>
                         <dt class="font-bold">Date et heure de début</dt>
-                        <dd><?= $jiri->starting_at ?></dd>
+                        <dd><?= \Carbon\Carbon::createFromFormat('Y-m-d H:i:s', $jiri->starting_at)
+                                ->locale('fr')
+                                ->diffForHumans() ?>
+                        </dd>
+                        <dd><?= \Carbon\Carbon::createFromFormat('Y-m-d H:i:s', $jiri->starting_at)
+                                ->locale('fr')
+                                ->toDateTimeString() ?>
+                        </dd>
                     </div>
                 </dl>
                 <div>
                     <a href="/jiri/edit?id=<?= $jiri->id ?>"
                        class="underline text-blue-500">modifier ce jiri</a>
                 </div>
-                <form action="/jiri"
-                      method="post">
-                    <?php method('delete') ?>
-                    <?php csrf_token() ?>
-                    <input type="hidden"
-                           name="id"
-                           value="<?= $jiri->id ?>">
-                    <button type="submit"
-                            class="text-red-500">Supprimer ce jiri
-                    </button>
-                </form>
+                <?php
+                component('forms.jiris.delete', ['id' => $jiri->id]) ?>
             </main>
-            <nav id="main-menu">
-                <h2 class="sr-only">Menu principal</h2>
-                <ul class="flex gap-4">
-                    <li><a class="underline text-blue-500"
-                           href="/jiris">Jiris</a></li>
-                    <li><a class="underline text-blue-500"
-                           href="/contacts">Contacts</a></li>
-                    <li><a class="underline text-blue-500"
-                           href="/projects">Projets</a></li>
-                </ul>
-            </nav>
+            <?php
+            component('navigations.main'); ?>
         </div>
     </body>
 </html>

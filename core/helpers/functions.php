@@ -1,5 +1,6 @@
 <?php
 
+use Core\View;
 use JetBrains\PhpStorm\NoReturn;
 
 #[NoReturn] function dd(mixed ...$vars): void
@@ -11,14 +12,19 @@ use JetBrains\PhpStorm\NoReturn;
     die();
 }
 
-
 function view(string $path, array $data = []): void
 {
-    extract($data);
+    View::view($path, $data);
+}
 
-    $fragments = explode('.', $path);
+function component(string $path, array $data = []): void
+{
+    View::component($path, $data);
+}
 
-    require base_path("resources/views/{$fragments[0]}/{$fragments[1]}.view.php");
+function partials(string $path, array $data = []): void
+{
+    View::partials($path, $data);
 }
 
 function base_path(string $path = ''): string
@@ -28,7 +34,7 @@ function base_path(string $path = ''): string
 
 function public_path(string $path = ''): string
 {
-    $server = 'http'.($_SERVER['HTTPS'] === 'on' ? 's' : '').'://'.$_SERVER['SERVER_NAME'];
+    $server = 'Http'.($_SERVER['HTTPS'] === 'on' ? 's' : '').'://'.$_SERVER['SERVER_NAME'];
 
     return "{$server}/$path";
 }
