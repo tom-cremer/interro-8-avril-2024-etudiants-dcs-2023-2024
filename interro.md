@@ -25,7 +25,7 @@ Nous nous concentrerons sur les trois premières qui impliquent déjà pas mal d
 
 ## Techniquement…
 
-L’indicateur qu’un utilisateur est effectivement connecté est le fait que ses informations sont accessibles dans la session ;
-L’opération de *s’enregistrer* équivaut à ajouter un utilisateur dans la table users ;
-L’opération de *se connecter* consiste à vérifier que les informations fournies par l’utilisateur correspondent à une entrée en DB, à récupérer les informations en question dans la DB et à les mettre dans la session ;
-L’opération de *se déconnecter* consiste en la destruction des informations relatives à l’utilisateur dans la session. De manière très agressive, on peut envisager de faire ça en détruisant carrément toutes les informations de session.
+- L’indicateur qu’un utilisateur est effectivement connecté est le fait que ses informations sont accessibles dans la session ;
+- l’opération de *s’enregistrer* équivaut à ajouter un utilisateur dans la table users ;
+- l’opération de *se connecter* consiste à vérifier que les informations fournies par l’utilisateur correspondent à une entrée en DB, à récupérer les informations en question dans la DB et à les mettre dans la session ;
+- l’opération de *se déconnecter* consiste en la destruction des informations relatives à l’utilisateur dans la session. De manière très agressive, on peut envisager de faire ça en détruisant carrément toutes les informations de session.
