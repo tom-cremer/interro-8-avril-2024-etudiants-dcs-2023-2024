@@ -11,9 +11,6 @@ try {
 }
 
 // Drop tables
-echo 'Dropping all Tables'.PHP_EOL;
-$db->dropTables();
-echo 'All tables have been dropped'.PHP_EOL;
 
 // Create tables
 

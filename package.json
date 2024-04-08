@@ -20,6 +20,6 @@
   },
   "homepage": "https://github.com/tecg-dcs-2023-2024/screencast#readme",
   "devDependencies": {
-    "tailwindcss": "^3.4.1"
+    "tailwindcss": "^3.4.3"
   }
 }

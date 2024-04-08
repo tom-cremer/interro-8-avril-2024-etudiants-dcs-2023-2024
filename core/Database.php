@@ -131,4 +131,25 @@ class Database extends PDO
 
         return $statement->execute();
     }
+
+    public function register(array $data): bool
+    {
+        $columns = implode(',', array_keys($data));
+        $placeholders = implode(', ', array_map(static function ($key) {
+            return ":$key";
+        }, array_keys($data)));
+
+        $sql = <<<SQL
+            INSERT INTO users ($columns)
+            VALUES ($placeholders)
+        SQL;
+
+        $statement = $this->prepare($sql);
+
+        foreach ($data as $k => $v) {
+            $statement->bindValue($k, $v);
+        }
+
+        return $statement->execute();
+    }
 }
